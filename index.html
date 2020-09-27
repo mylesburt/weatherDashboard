@@ -33,7 +33,7 @@
                                     aria-label="Recipient's username" aria-describedby="basic-addon2"
                                     id="citySearchBar">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button"
+                                    <button id="searchBtn" class="btn btn-primary" type="button"
                                         onclick="displayCityWeather()">Button</button>
                                 </div>
                             </div>
@@ -47,14 +47,14 @@
                 </div>
             </div>
             <div class="col-9">
-                <div class="m-3">
-                    <div class="border border-secondary p-1">
+                <div class="my-3">
+                    <div class="border border-secondary p-2">
                         <div id="">
                             <h3 id="cityName">Choose a city!</h3>
                             <h5 id="temperature">Temperture:</h5>
                             <h5 id="humidity">Humidity:</h5>
                             <h5 id="windSpeed">Wind Speed:</h5>
-                            <h5 id="uvIndex">UV Index: 9.49</h5>
+                            <h5 id="uvIndex">UV Index: </h5>
                         </div>
                     </div>
                 </div>
@@ -64,11 +64,56 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
+                    <div class="col">
+                        <div id="card1">
+                            <div class="rounded bg-primary text-white p-2">
+                                <h4 id="dateCard1">dsssdsds</h4>
+                                <div id="weatherIcon1">sdsdsds</div>
+                                <h5 id="temperatureCard1">sdsdsdsdds</h5>
+                                <h5 id="humdityCard1">sdsdasd</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="card2">
+                            <div class="rounded bg-primary text-white p-2">
+                                <h3 id="dateCard2"></h3>
+                                <div id="weatherIcon2"></div>
+                                <h4 id="temperatureCard2"></h4>
+                                <h4 id="humdityCard2"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="card3">
+                            <div class="rounded bg-primary text-white p-2">
+                                <h3 id="dateCard3"></h3>
+                                <div id="weatherIcon3"></div>
+                                <h4 id="temperatureCard3"></h4>
+                                <h4 id="humdityCard3"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="card4">
+                            <div class="rounded bg-primary text-white p-2">
+                                <h3 id="dateCard4"></h3>
+                                <div id="weatherIcon4"></div>
+                                <h4 id="temperatureCard4"></h4>
+                                <h4 id="humdityCard4"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="card5">
+                            <div class="rounded bg-primary text-white p-2">
+                                <h3 id="dateCard5"></h3>
+                                <div id="weatherIcon5"></div>
+                                <h4 id="temperatureCard5"></h4>
+                                <h4 id="humdityCard5"></h4>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
