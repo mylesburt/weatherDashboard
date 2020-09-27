@@ -1,8 +1,14 @@
 
 //Variables
 
+var searchList = [];
+
 //Hiding Forecast cards at the begin
 $("#card1").hide();
+$("#card2").hide();
+$("#card3").hide();
+$("#card4").hide();
+$("#card5").hide();
 
 //CURENT DAY variables
 var today = new Date();
@@ -13,41 +19,8 @@ var year = today.getFullYear();
 var displayDate = day + "/" + month + "/" + year;
 
 
-//Need to find out how to roll over forecast days into the next month...
-
-//TOMORROW DATE variables
-var day2 = String(today.getDate() + 1);
-//Concatenating the tomorrow date variables...
-var displayTomorrow = day2 + "/" + month + "/" + year;
-
-//DAY 3 variables
-var day3 = String(today.getDate() + 2);
-//Concatenating the Day 3 variables...
-var displayDay3 = day3 + "/" + month + "/" + year;
-
-//DAY 4 variables
-var day4 = String(today.getDate() + 3);
-//Concatenating the Day 4 variables...
-var displayDay4 = day4 + "/" + month + "/" + year;
-
-//DAY 5 variables
-var day5 = String(today.getDate() + 4);
-//Concatenating the Day 5 variables...
-var displayDay5 = day5 + "/" + month + "/" + year;
-
-//DAY 5 variables
-var day5 = String(today.getDate() + 4);
-//Concatenating the Day 5 variables...
-var displayDay5 = day5 + "/" + month + "/" + year;
-
-console.log(displayDate);
-console.log(displayTomorrow);
-console.log(displayDay3);
-console.log(displayDay4);
-console.log(displayDay5);
-
-
 function displayCityWeather() {
+    event.preventDefault();
 
     var citySearch = $("#citySearchBar").val();
     var queryURLCWD = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearch + "&appid=48eb8f7025236f284142f7fe0b9f55b4&units=metric";
@@ -105,14 +78,85 @@ function displayCityWeather() {
             }
 
 
+
+
+
+
+
+
+
         });
     });
+
+
+    //UV Index API 5 Day Forecast...
+    var queryURLFiveDay = "http://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=48eb8f7025236f284142f7fe0b9f55b4&units=metric";
+
+    //AJAX request for UV Index
+    $.ajax({
+        url: queryURLFiveDay,
+        method: "GET"
+    }).then(function (response) {
+        //Card 1
+        $("#dateCard1").text(response.list[6].dt_txt);
+        $("#temperatureCard1").text("Temp: " + response.list[6].main.temp + "°C");
+        $("#humidityCard1").text("Humidity: " + response.list[6].main.humidity + "%");
+        //Card 2
+        $("#dateCard2").text(response.list[14].dt_txt);
+        $("#temperatureCard2").text("Temp: " + response.list[14].main.temp + "°C");
+        $("#humidityCard2").text("Humidity: " + response.list[14].main.humidity + "%");
+        //Card 3
+        $("#dateCard3").text(response.list[22].dt_txt);
+        $("#temperatureCard3").text("Temp: " + response.list[22].main.temp + "°C");
+        $("#humidityCard3").text("Humidity: " + response.list[22].main.humidity + "%");
+        //Card 4
+        $("#dateCard4").text(response.list[30].dt_txt);
+        $("#temperatureCard4").text("Temp: " + response.list[30].main.temp + "°C");
+        $("#humidityCard4").text("Humidity: " + response.list[30].main.humidity + "%");
+        //Card 5
+        $("#dateCard5").text(response.list[38].dt_txt);
+        $("#temperatureCard5").text("Temp: " + response.list[38].main.temp + "°C");
+        $("#humidityCard5").text("Humidity: " + response.list[38].main.humidity + "%");
+
+
+    });
 }
+
+function renderSearchList() {
+    $("#searchListPrevious").empty();
+
+    for (var i = 0; i < searchList.length; i++) {
+        var newCity = $("<li>");
+        newCity.addClass("list-group-item");
+        newCity.attr("data-name", searchList[i]);
+        newCity.text(searchList[i]);
+        $("#searchListPrevious").append(newCity);
+    }
+}
+
+
+
+$("#searchBtn").on("click", function (event) {
+    event.preventDefault();
+    // This line grabs the input from the textbox
+    var cityList = $("#citySearchBar").val().trim();
+
+    // Adding movie from the textbox to our array
+    searchList.push(cityList);
+
+    // Calling renderButtons which handles the processing of our movie array
+    renderSearchList();
+});
+
 
 //Show forecast cards...
 $(document).ready(function () {
     $("#searchBtn").on("click", function () {
         $("#card1").show();
+        $("#card2").show();
+        $("#card3").show();
+        $("#card4").show();
+        $("#card5").show();
     });
 });
 
