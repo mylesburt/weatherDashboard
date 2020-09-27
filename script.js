@@ -45,7 +45,7 @@ function displayCityWeather() {
         var lat = response.coord.lat;
 
         //UV Index API URL...
-        var queryURLUVIndex = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + long + "&appid=48eb8f7025236f284142f7fe0b9f55b4";
+        var queryURLUVIndex = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + long + "&appid=48eb8f7025236f284142f7fe0b9f55b4";
 
         //AJAX request for UV Index
         $.ajax({
@@ -90,7 +90,7 @@ function displayCityWeather() {
 
 
     //UV Index API 5 Day Forecast...
-    var queryURLFiveDay = "http://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=48eb8f7025236f284142f7fe0b9f55b4&units=metric";
+    var queryURLFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&appid=48eb8f7025236f284142f7fe0b9f55b4&units=metric";
 
     //AJAX request for UV Index
     $.ajax({
